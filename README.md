@@ -34,6 +34,19 @@ Default username is `admin`
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 ### 6. Modify password of ArgoCD UI (optional):
+#### 6.1 Modify via `argocd` CLI:
 ```
 argocd account update-password --account admin --current-password xxxx --new-password xxxx
+```
+#### 6.2 Modify via K8S secret:
+Encode your password to base64.
+```
+kubectl edit secrets argocd-initial-admin-secret -n argocd
+
+apiVersion: v1
+data:
+  password: NkRaazAzQy12Tlo3R0taWA==
+kind: Secret
+metadata:
+...
 ```
