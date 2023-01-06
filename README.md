@@ -41,7 +41,7 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 argocd account update-password --account admin --current-password xxxx --new-password xxxx
 ```
 #### 6.2 Modify via K8S secret:
-Encode your password to base64.
+Encode your password to base64 paste to `.data.password` field.
 ```
 kubectl edit secrets argocd-initial-admin-secret -n argocd
 
