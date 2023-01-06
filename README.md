@@ -32,6 +32,8 @@ Forwarding from [::1]:8080 -> 8080
 Default username is `admin`
 ```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+
+6DZk03C-vNZ7GKZX
 ```
 ### 6. Modify password of ArgoCD UI (optional):
 #### 6.1 Modify via `argocd` CLI:
