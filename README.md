@@ -36,19 +36,13 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 6DZk03C-vNZ7GKZX
 ```
 ### 6. Modify password of ArgoCD UI (optional):
-#### 6.1 Modify via `argocd` CLI:
+#### 6.1 Login to Argo CD via Argo CD CLI:
 ```
-argocd account update-password --account admin --current-password xxxx --new-password xxxx
+argocd login localhost:8080 - username admin - password 6DZk03C-vNZ7GKZX - insecure
+'admin:login' logged in successfully
+Context 'localhost:8080' updated
 ```
-#### 6.2 Modify via K8S secret:
-Encode your password to base64 paste to `.data.password` field.
+#### 6.2 Update default admin password via Arog CD CLI:
 ```
-kubectl edit secrets argocd-initial-admin-secret -n argocd
-
-apiVersion: v1
-data:
-  password: NkRaazAzQy12Tlo3R0taWA==
-kind: Secret
-metadata:
-...
+argocd account update-password --account admin --current-password 6DZk03C-vNZ7GKZX --new-password xxxx
 ```
